@@ -9,7 +9,7 @@ import { Map as map } from 'immutable';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../pages/components/header';
 import NotFound from '../pages/components/not-found';
 
@@ -55,19 +55,25 @@ render(
     <Provider store={store}>
       <Fragment>
         <Header/>
-        <Route 
-          exact
-          path="/"
-          component={Home}
-        />
-        <Route
-          exact
-          path="/videos"
-          component={Videos}
-        />
-        <Route
-          component={NotFound}
-         />
+        <Switch>
+          <Route 
+            exact
+            path="/"
+            component={Home}
+          />
+          <Route
+            exact
+            path="/videos"
+            component={Videos}
+          />
+          <Redirect
+            from="/v"
+            to="/videos"
+          />
+          <Route
+            component={NotFound}
+           />
+          </Switch>
       </Fragment>
     </Provider>
   </BrowserRouter>
