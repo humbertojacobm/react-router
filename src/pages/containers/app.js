@@ -12,6 +12,8 @@ import Videos from './videos';
 import Home from '../components/home';
 import NotFound from '../components/not-found';
 import Header from '../components/header';
+import Video from './video';
+
 const logger_ = ({getState, dispatch }) => next => action => {
   console.log('este es mi viejo estado', getState().toJS())
   console.log('vamos a enviar está acción', action);
@@ -47,6 +49,15 @@ class App extends Component{
               exact
               path="/videos"
               component={Videos}
+            />
+            <Route
+              exact
+              path="/videos/:id"
+              component={Video}
+            />
+            <Redirect
+              from="/v/:id"
+              to="/videos/:id"
             />
             <Redirect
               from="/v"

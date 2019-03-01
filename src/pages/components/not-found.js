@@ -1,5 +1,6 @@
 import React, { PureComponent} from 'react';
 import './generic-page.css';
+import { withRouter } from 'react-router';
 class NotFound extends PureComponent {
   handleRandomClick = () => {
     const random = Math.round(Math.random() * (10-1) +1);
@@ -47,4 +48,4 @@ class NotFound extends PureComponent {
   }
 }
 
-export default NotFound;
+export default withRouter(NotFound);
